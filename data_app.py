@@ -9,8 +9,8 @@ expected = st.file_uploader('Inserte el archivo csv de expected', type = 'csv')
 counted = st.file_uploader('Inserte el archivo csv de counted', type = 'csv')
 
 if (expected and counted):
-    df_expected = pd.read_csv(expected)
-    df2_counted = pd.read_csv(counted)
+    df_expected = pd.read_csv(expected, encoding="latin-1", dtype=str)
+    df2_counted = pd.read_csv(counted, encoding="latin-1", dtype=str)
     st.dataframe(df_expected, 200, 100)
     st.dataframe(df2_counted, 200, 100)
     st.markdown("---")

@@ -8,7 +8,7 @@ st.title("CSV Reader")
 expected = st.file_uploader('Inserte el archivo csv de expected', type = 'csv')
 counted = st.file_uploader('Inserte el archivo csv de counted', type = 'csv')
 
-if (expected & counted):
+if (expected and counted):
     df_expected = pd.read_csv(expected)
     df2_counted = pd.read_csv(counted)
     st.dataframe(df_expected, 200, 100)

@@ -47,5 +47,30 @@ if (expected and counted):
 
     st.dataframe(df_discrepancy)
 
+    # Using a sidebar
+    st.sidebar.header("Por favor utilice los siguientes filtros")
 
-    
+    prod_lev1Name = st.sidebar.multiselect(
+        'Seleccione un tipo de producto:',
+        options = df_discrepancy['Retail_Product_Level1Name'].unique(),
+        default = df_discrepancy['Retail_Product_Level1Name'].unique()
+    )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

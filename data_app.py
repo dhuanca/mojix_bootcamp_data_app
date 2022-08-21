@@ -11,8 +11,8 @@ counted = st.file_uploader('Inserte el archivo csv de counted', type = 'csv')
 if (expected and counted):
     df_expected = pd.read_csv(expected, encoding="latin-1", dtype=str)
     df2_counted = pd.read_csv(counted, encoding="latin-1", dtype=str)
-    st.dataframe(df_expected)
-    st.dataframe(df2_counted)
+    #st.dataframe(df_expected)
+    #st.dataframe(df2_counted)
     st.markdown("---")
 
 # Data engineering over the two source of information
@@ -63,7 +63,7 @@ if (expected and counted):
     )
 
 
-    df_selection = df.query(
+    df_selection = df_discrepancy.query(
         "Retail_Product_Level1Name == @Retail_Product_Level1Name & Retail_Product_Color == @Retail_Product_Color"
     )
 

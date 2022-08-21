@@ -75,6 +75,7 @@ if (expected and counted):
     st.title('Inventory Discrepancy')
     st.markdown('##')
 
+    df_barras = df_selection.groupby ("Retail_Product_Level1"). sum()[["Retail_SOHQTY", "Retail_CCQTY"]].reset_index()
 
     # KPIs 
     operational_accuracy = (int( df_selection['match'].sum()) / int( df_selection['Retail_SOHQTY'].sum()))*100
@@ -86,10 +87,17 @@ if (expected and counted):
     with left_column:
         st.subheader('Operational Accuracy: ')
         st.subheader( f" {operational_accuracy:,}")
+        sns.set_theme(style="whitegrid")
+        ax = sns.barplot(x="Retail_SOHQTY", y="Retail_Product_Level1", data=df_barras)
+
 
     with right_column:
         st.subheader('Inventory Accuracy: ')
         st.subheader( f" {inventory_accuracy:,}")
+        sns.set_theme(style="whitegrid")
+        ax = sns.barplot(x="Retail_CCQTY", y="Retail_Product_Level1", data=df_barras)
+
+
 
     st.markdown('---')
 

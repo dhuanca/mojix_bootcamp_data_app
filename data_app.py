@@ -45,7 +45,10 @@ if (expected and counted):
     df_discrepancy.loc[df_discrepancy["Diff"]<0, "Unders"] = df_discrepancy["Diff"] * (-1)
     df_discrepancy['Unders'] =  df_discrepancy['Unders'].fillna(0).astype(int)
 
-    st.dataframe(df_discrepancy)
+    df_discrepancy.loc[(df_discrepancy["Retail_SOHQTY"]>0) & (df_discrepancy["Retail_CCQTY"]>0), "match"]  = 1.0
+    df_discrepancy['match'] =  df_discrepancy['match'].fillna(0).astype(int)
+
+    #st.dataframe(df_discrepancy)
 
     # Using a sidebar
     st.sidebar.header("Por favor utilice los siguientes filtros")
@@ -68,6 +71,13 @@ if (expected and counted):
     )
 
     st.dataframe(df_selection)
+
+    st.title('Inventory Discrepancy')
+    st.markdown('##')
+
+
+    # KPIs 
+    # Operational_accuracy = int( df_selection['match'] )
 
 
 

@@ -77,12 +77,23 @@ if (expected and counted):
 
 
     # KPIs 
-    # Operational_accuracy = int( df_selection['match'] )
+    operational_accuracy = (int( df_discrepancy['match'].sum()) / int( df_discrepancy['Retail_SOHQTY'].sum()))*100
+    inventory_accuracy = (int( df_discrepancy['match'].sum()) / int( df_discrepancy['Retail_CCQTY'].sum()))*100
 
 
+    left_column, right_column = st.columns(2)
 
+    with left_column:
+        st.subheader('Operational Accuracy: ')
+        st.subheader( f" {operational_accuracy:,}")
 
+    with right_column:
+        st.subheader('Inventory Accuracy: ')
+        st.subheader( f" {inventory_accuracy:,}")
 
+    st.markdown('---')
+
+    
 
 
 
